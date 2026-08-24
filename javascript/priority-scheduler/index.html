@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priority Scheduler</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <h1>Priority Scheduler</h1>
+    <p class="subtitle">A binary min-heap (<code>heap.js</code>) backing a <code>TaskScheduler</code> — lower priority number runs first, ties broken by arrival order.</p>
+
+    <div class="panel">
+      <form class="add-row" id="addForm">
+        <input type="text" id="taskName" placeholder="Task name" maxlength="60" autocomplete="off">
+        <input type="number" id="taskPriority" value="5" min="0" max="99">
+        <button type="submit">Schedule</button>
+      </form>
+    </div>
+
+    <div class="panel">
+      <p class="section-heading">Pending queue (heap order)</p>
+      <ul class="queue-list" id="queueList"></ul>
+      <div class="controls">
+        <button type="button" class="primary" id="runNextBtn">Run next</button>
+        <button type="button" id="runAllBtn">Run all</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <p class="section-heading">Execution log</p>
+      <pre class="log-panel" id="logPanel"></pre>
+    </div>
+  </div>
+
+  <script src="heap.js"></script>
+  <script src="scheduler.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
