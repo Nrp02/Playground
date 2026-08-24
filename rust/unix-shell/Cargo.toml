@@ -1,0 +1,9 @@
+[package]
+name = "unix-shell"
+version = "0.1.0"
+edition = "2021"
+description = "A POSIX-style interactive shell with pipelines, redirections, job control, and variable expansion, built from scratch on raw libc FFI with no external crates."
+
+[[bin]]
+name = "unix-shell"
+path = "src/main.rs"
