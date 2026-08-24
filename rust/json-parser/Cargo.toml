@@ -1,0 +1,5 @@
+[package]
+name = "json-parser"
+version = "0.1.0"
+edition = "2021"
+description = "A JSON lexer, recursive-descent parser, and pretty-printer implemented from scratch, with no serde or JSON crate dependencies."

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canvas Breakout</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-wrap">
+    <h1>Breakout</h1>
+
+    <div class="hud">
+      <div class="hud-item">Score: <span id="score">0</span></div>
+      <div class="hud-item">Lives: <span id="lives">3</span></div>
+      <div class="hud-item">Level: <span id="level">1</span></div>
+      <div class="hud-item">High Score: <span id="highScore">0</span></div>
+      <button id="muteBtn" class="mute-btn" title="Toggle sound" aria-label="Toggle sound">&#128266;</button>
+    </div>
+
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="800" height="560"></canvas>
+      <div id="overlay" class="overlay">
+        <div class="overlay-content">
+          <h2 id="overlayTitle">Breakout</h2>
+          <p id="overlayMessage">Use the mouse or arrow keys to move the paddle.<br>Break every brick without losing all your lives.</p>
+          <button id="startBtn" class="btn">Start Game</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="controls-hint">Move: Mouse or &larr; / &rarr; &nbsp;&middot;&nbsp; Launch ball: Space &nbsp;&middot;&nbsp; Pause: P &nbsp;&middot;&nbsp; Mute: M</p>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

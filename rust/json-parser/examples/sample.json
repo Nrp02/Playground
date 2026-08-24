@@ -1,0 +1,39 @@
+{
+  "project": "json-parser",
+  "version": "0.1.0",
+  "authors": ["Ada Lovelace", "Alan Turing"],
+  "dependencies": {},
+  "settings": {
+    "max_depth": 64,
+    "strict_mode": true,
+    "allowed_extensions": [".json", ".jsonl"],
+    "retry": {
+      "attempts": 3,
+      "backoff_seconds": 1.5,
+      "jitter": null
+    }
+  },
+  "modules": [
+    {
+      "name": "lexer",
+      "lines_of_code": 250,
+      "public": true
+    },
+    {
+      "name": "parser",
+      "lines_of_code": 300,
+      "public": true
+    },
+    {
+      "name": "value",
+      "lines_of_code": 220,
+      "public": true
+    }
+  ],
+  "metrics": {
+    "coverage_percent": 92.5,
+    "last_run_unix": 1735689600,
+    "temperature_offset": -0.003
+  },
+  "notes": "Handles escapes like \"quotes\", line breaks\nand tabs\t, plus unicode: café, ❤️"
+}

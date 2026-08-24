@@ -1,0 +1,14 @@
+# Exercises operator precedence, parentheses, and mixed arithmetic.
+
+print 2 + 3 * 4;               # 14   (* before +)
+print (2 + 3) * 4;             # 20   (parens override precedence)
+print 10 - 2 - 3;              # 5    (left-associative)
+print 2 * (3 + 4) - 10 / 5;    # 12   (2*7 - 2)
+print 7 % 3;                   # 1
+print -5 + 10;                 # 5    (unary minus)
+print -(3 + 4);                # -7
+
+print 1 + 1 == 2;              # true
+print (1 + 1 == 2) and (3 > 2);# true
+print not (3 > 5);             # true
+print 5 != 5 or 2 < 1;         # false

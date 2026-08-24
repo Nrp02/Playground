@@ -1,0 +1,23 @@
+fun factorial(n) {
+    if (n <= 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+fun greet(name, times) {
+    var i = 0;
+    while (i < times) {
+        print "hello " + name;
+        i = i + 1;
+    }
+    return nil;
+}
+
+var n = 1;
+while (n <= 8) {
+    print factorial(n);
+    n = n + 1;
+}
+
+greet("world", 3);

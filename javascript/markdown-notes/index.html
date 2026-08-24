@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown Notes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>Markdown Notes</h1>
+        <div class="header-btns">
+          <button id="newNoteBtn" class="btn btn-primary" title="Create a new note">+ New</button>
+          <button id="importNoteBtn" class="btn btn-ghost" title="Import a .md file as a new note">Import</button>
+        </div>
+      </div>
+
+      <div class="search-row">
+        <input type="search" id="searchInput" class="search-input" placeholder="Search notes... (press /)">
+      </div>
+
+      <div class="tag-filter" id="tagFilter" hidden></div>
+
+      <div class="sidebar-toolbar">
+        <label for="sortSelect">Sort by</label>
+        <select id="sortSelect">
+          <option value="updated">Last updated</option>
+          <option value="created">Date created</option>
+          <option value="title">Title (A-Z)</option>
+        </select>
+        <button id="helpBtn" class="icon-btn" title="Markdown syntax reference">?</button>
+        <button id="themeToggleBtn" class="icon-btn theme-toggle" title="Toggle light/dark theme">&#9788;</button>
+      </div>
+
+      <ul class="note-list" id="noteList"></ul>
+
+      <div class="sidebar-footer" id="noteCount"></div>
+    </aside>
+
+    <main class="workspace" id="workspace">
+      <div class="empty-state" id="emptyState">
+        <p class="empty-state-title">No note selected</p>
+        <p class="empty-state-hint">Create a note, or pick one from the list on the left.</p>
+        <button id="emptyNewNoteBtn" class="btn btn-primary">Create your first note</button>
+      </div>
+
+      <div class="editor-shell" id="editorShell" hidden>
+        <div class="editor-toolbar">
+          <input type="text" id="titleInput" class="title-input" placeholder="Untitled note" maxlength="200">
+          <div class="toolbar-actions">
+            <button id="duplicateBtn" class="icon-btn" title="Duplicate this note">&#10063;</button>
+            <button id="exportBtn" class="icon-btn" title="Export this note as a .md file">&#8681;</button>
+            <button id="deleteBtn" class="icon-btn danger" title="Delete this note">&#10005;</button>
+          </div>
+        </div>
+
+        <input type="text" id="tagsInput" class="tags-input" placeholder="Add tags, separated by commas...">
+
+        <div class="panes">
+          <section class="pane editor-pane">
+            <div class="pane-label">Markdown</div>
+            <textarea id="bodyInput" class="body-input" placeholder="Write Markdown here..." spellcheck="false"></textarea>
+          </section>
+          <section class="pane preview-pane">
+            <div class="pane-label">Preview</div>
+            <div id="previewOutput" class="preview-output"></div>
+          </section>
+        </div>
+
+        <div class="status-bar">
+          <span id="wordCount" class="word-count"></span>
+          <span id="savedIndicator" class="saved-indicator"></span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <input type="file" id="importFileInput" accept=".md,.markdown,.txt,text/markdown,text/plain" hidden>
+
+  <template id="noteListItemTemplate">
+    <li class="note-item" tabindex="0">
+      <div class="note-item-title"></div>
+      <div class="note-item-meta">
+        <span class="note-item-date"></span>
+        <span class="note-item-words"></span>
+      </div>
+      <div class="note-item-tags"></div>
+    </li>
+  </template>
+
+  <div class="modal-backdrop" id="helpBackdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <div class="modal-header">
+        <h2 id="helpTitle">Markdown syntax reference</h2>
+        <button id="helpCloseBtn" class="icon-btn" title="Close" aria-label="Close">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <table class="help-table">
+          <thead>
+            <tr><th>Type this</th><th>Get this</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code># H1</code> &hellip; <code>###### H6</code></td><td>Headings, level 1&ndash;6</td></tr>
+            <tr><td><code>**bold**</code> or <code>__bold__</code></td><td><strong>bold</strong></td></tr>
+            <tr><td><code>*italic*</code> or <code>_italic_</code></td><td><em>italic</em></td></tr>
+            <tr><td><code>***both***</code></td><td><strong><em>both</em></strong></td></tr>
+            <tr><td><code>`code`</code></td><td><code>inline code</code></td></tr>
+            <tr><td>&#96;&#96;&#96;lang &hellip; &#96;&#96;&#96;</td><td>fenced code block, language kept as a class</td></tr>
+            <tr><td><code>- item</code>, <code>* item</code>, <code>+ item</code></td><td>bulleted list &mdash; indent to nest</td></tr>
+            <tr><td><code>1. item</code> or <code>1) item</code></td><td>numbered list &mdash; indent to nest</td></tr>
+            <tr><td><code>&gt; quote</code></td><td>blockquote &mdash; use <code>&gt; &gt;</code> to nest</td></tr>
+            <tr><td><code>[text](url "title")</code></td><td>link</td></tr>
+            <tr><td><code>![alt](url "title")</code></td><td>image</td></tr>
+            <tr><td><code>---</code>, <code>***</code>, or <code>___</code></td><td>horizontal rule</td></tr>
+            <tr><td>line ending in two spaces, or a backslash</td><td>forced line break</td></tr>
+          </tbody>
+        </table>
+        <p class="help-note">
+          This is a small hand-written parser, not full CommonMark &mdash; tables,
+          reference-style links, footnotes, and HTML passthrough are not supported.
+          Any raw HTML you type (like a stray <code>&lt;script&gt;</code>) is shown
+          as plain text rather than executed.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="markdown-parser.js"></script>
+  <script src="storage.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

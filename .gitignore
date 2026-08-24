@@ -1,0 +1,14 @@
+*.iml
+.idea/
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+
+# build artifacts from playground projects
+target/
+node_modules/
+*.o
+*.ppm
+cpp/*/bin/
+

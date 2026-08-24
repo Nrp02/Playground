@@ -1,0 +1,8 @@
+[package]
+name = "trie-search"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "trie-search"
+path = "src/main.rs"

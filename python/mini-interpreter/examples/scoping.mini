@@ -1,0 +1,25 @@
+# Demonstrates block scoping: `let` inside a `{ }` block creates a NEW
+# binding local to that block (shadowing an outer variable of the same
+# name), while plain assignment (`=`) always mutates the nearest
+# enclosing binding instead of creating a new one.
+
+let x = 1;
+print x;
+
+if (true) {
+    let x = 99;
+    print x;
+}
+print x;
+
+# `doubled` is freshly declared inside the loop body, so each iteration
+# gets its own binding (no accumulation across iterations); `counter` is
+# only ever assigned (never re-`let`), so every iteration mutates the
+# same outer binding and the loop actually terminates.
+let counter = 0;
+while (counter < 3) {
+    let doubled = counter * 2;
+    print doubled;
+    counter = counter + 1;
+}
+print counter;

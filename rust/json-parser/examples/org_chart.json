@@ -1,0 +1,31 @@
+{
+  "company": "Acme Corp",
+  "founded": 1987,
+  "public": false,
+  "ceo": {
+    "name": "Morgan Lee",
+    "reports": [
+      {
+        "name": "Priya Nair",
+        "title": "VP Engineering",
+        "reports": [
+          {"name": "Sam Chen", "title": "Staff Engineer", "reports": []},
+          {"name": "Diego Ruiz", "title": "Engineering Manager", "reports": [
+            {"name": "Fatima Zahra", "title": "Software Engineer", "reports": []},
+            {"name": "Liam O'Brien", "title": "Software Engineer", "reports": []}
+          ]}
+        ]
+      },
+      {
+        "name": "Jordan Blake",
+        "title": "VP Sales",
+        "reports": [
+          {"name": "Nina Petrov", "title": "Account Executive", "reports": []}
+        ]
+      }
+    ]
+  },
+  "offices": ["New York", "Berlin", "Singapore"],
+  "revenue_millions": [12.4, 15.1, 18.75, 22.0],
+  "tags": null
+}

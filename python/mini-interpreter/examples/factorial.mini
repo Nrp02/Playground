@@ -1,0 +1,13 @@
+# Compute factorials of 1 through 10 with a nested while loop.
+
+let i = 1;
+while (i <= 10) {
+    let result = 1;
+    let j = 1;
+    while (j <= i) {
+        result = result * j;
+        j = j + 1;
+    }
+    print i + "! = " + result;
+    i = i + 1;
+}

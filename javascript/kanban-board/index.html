@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanban Board</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Kanban Board</h1>
+    <div class="header-actions">
+      <input type="search" id="searchInput" class="search-input" placeholder="Search tasks...">
+      <span id="taskCount" class="task-count"></span>
+      <button id="clearBoardBtn" class="btn btn-ghost" title="Remove all tasks">Clear board</button>
+    </div>
+  </header>
+
+  <main class="board" id="board">
+    <section class="column" data-status="todo">
+      <div class="column-header">
+        <h2>To Do</h2>
+        <span class="column-count" id="count-todo">0</span>
+      </div>
+      <form class="add-task-form" data-status="todo">
+        <input type="text" class="add-task-input" placeholder="Add a task..." maxlength="200" required>
+        <select class="priority-select" title="Priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit" class="btn btn-add">Add</button>
+      </form>
+      <div class="task-list" id="list-todo" data-status="todo"></div>
+    </section>
+
+    <section class="column" data-status="in-progress">
+      <div class="column-header">
+        <h2>In Progress</h2>
+        <span class="column-count" id="count-in-progress">0</span>
+      </div>
+      <form class="add-task-form" data-status="in-progress">
+        <input type="text" class="add-task-input" placeholder="Add a task..." maxlength="200" required>
+        <select class="priority-select" title="Priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit" class="btn btn-add">Add</button>
+      </form>
+      <div class="task-list" id="list-in-progress" data-status="in-progress"></div>
+    </section>
+
+    <section class="column" data-status="done">
+      <div class="column-header">
+        <h2>Done</h2>
+        <span class="column-count" id="count-done">0</span>
+      </div>
+      <form class="add-task-form" data-status="done">
+        <input type="text" class="add-task-input" placeholder="Add a task..." maxlength="200" required>
+        <select class="priority-select" title="Priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit" class="btn btn-add">Add</button>
+      </form>
+      <div class="task-list" id="list-done" data-status="done"></div>
+    </section>
+  </main>
+
+  <template id="taskCardTemplate">
+    <article class="task-card" draggable="true">
+      <div class="task-card-body">
+        <button type="button" class="priority-badge" title="Click to change priority"></button>
+        <p class="task-text"></p>
+        <input type="text" class="task-edit-input" maxlength="200" style="display:none;">
+      </div>
+      <div class="task-card-actions">
+        <button class="icon-btn edit-btn" title="Edit task" aria-label="Edit task">&#9998;</button>
+        <button class="icon-btn delete-btn" title="Delete task" aria-label="Delete task">&times;</button>
+      </div>
+    </article>
+  </template>
+
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

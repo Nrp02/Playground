@@ -1,0 +1,32 @@
+CXX      ?= c++
+CXXFLAGS ?= -std=c++17 -Wall -Wextra -O3 -pthread
+LDFLAGS  ?= -pthread
+
+SRC_DIR  := src
+BIN_DIR  := bin
+TARGET   := $(BIN_DIR)/raytracer
+
+SOURCES  := $(wildcard $(SRC_DIR)/*.cpp)
+OBJECTS  := $(SOURCES:$(SRC_DIR)/%.cpp=$(BIN_DIR)/%.o)
+DEPS     := $(OBJECTS:.o=.d)
+
+.PHONY: all clean run
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS) | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
+
+$(BIN_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BIN_DIR)
+	$(CXX) $(CXXFLAGS) -MMD -MP -c $< -o $@
+
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+run: $(TARGET)
+	$(TARGET) output.ppm
+
+clean:
+	rm -rf $(BIN_DIR)
+
+-include $(DEPS)

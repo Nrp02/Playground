@@ -1,0 +1,18 @@
+# Print all prime numbers up to 50 using nested while loops and
+# trial division (no built-in functions -- everything by hand).
+
+let n = 2;
+while (n <= 50) {
+    let is_prime = true;
+    let d = 2;
+    while (d * d <= n) {
+        if (n % d == 0) {
+            is_prime = false;
+        }
+        d = d + 1;
+    }
+    if (is_prime) {
+        print n;
+    }
+    n = n + 1;
+}

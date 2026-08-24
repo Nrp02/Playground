@@ -1,0 +1,32 @@
+# Exercises if/else-if/else chains, booleans, and logical operators.
+
+let x = 7;
+if (x > 10) {
+    print "big";
+} else if (x > 5) {
+    print "medium";
+} else {
+    print "small";
+}
+
+let flag = true;
+if (flag and x == 7) {
+    print "flag set and x is seven";
+}
+
+if (not flag) {
+    print "unreachable";
+} else {
+    print "flag was true";
+}
+
+let score = 83;
+if (score >= 90) {
+    print "grade: A";
+} else if (score >= 80) {
+    print "grade: B";
+} else if (score >= 70) {
+    print "grade: C";
+} else {
+    print "grade: F";
+}

@@ -1,0 +1,8 @@
+[package]
+name = "range-query-tree"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "range-query-tree"
+path = "src/main.rs"

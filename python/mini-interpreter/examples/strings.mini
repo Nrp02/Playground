@@ -1,0 +1,15 @@
+# Exercises string literals, escape sequences, and concatenation.
+
+let name = "World";
+print "Hello, " + name + "!";
+
+let greeting = "Tab:[\t]Newline:[\n]Quote:[\"]Backslash:[\\]";
+print greeting;
+
+let a = "foo";
+let b = "bar";
+print a + b;
+print a + b == "foobar";
+
+let count = 3;
+print "count = " + count;
