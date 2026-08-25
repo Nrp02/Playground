@@ -1,0 +1,5 @@
+[package]
+name = "lock-free-ring-buffer"
+version = "0.1.0"
+edition = "2021"
+description = "A lock-free bounded SPSC ring buffer built on std::sync::atomic with Acquire/Release ordering, no Mutex and no external crates."

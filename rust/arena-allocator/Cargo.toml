@@ -1,0 +1,5 @@
+[package]
+name = "arena-allocator"
+version = "0.1.0"
+edition = "2021"
+description = "A bump/arena allocator built from scratch: typed allocation with a bump pointer, chunk growth, and O(1) memory reuse via reset(), with no external dependencies."
