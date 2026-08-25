@@ -1,0 +1,5 @@
+[package]
+name = "huffman-compressor"
+version = "0.1.0"
+edition = "2021"
+description = "A byte-oriented Huffman coding compressor with bit-packed encoding and a self-describing header, no external crates."

@@ -1,0 +1,5 @@
+[package]
+name = "grep-clone"
+version = "0.1.0"
+edition = "2021"
+description = "A grep-like line matcher backed by a hand-written regex engine using Thompson's NFA construction, no external crates."
