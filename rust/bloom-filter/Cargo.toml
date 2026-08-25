@@ -1,0 +1,5 @@
+[package]
+name = "bloom-filter"
+version = "0.1.0"
+edition = "2021"
+description = "A probabilistic set-membership Bloom filter backed by a bitset, using double-hashing to derive multiple hash functions, no external crates."
