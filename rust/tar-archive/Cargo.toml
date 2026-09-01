@@ -1,0 +1,7 @@
+[package]
+name = "tar-archive"
+version = "0.1.0"
+edition = "2021"
+description = "A from-scratch ustar tar format reader and writer, no external crates."
+
+[dependencies]

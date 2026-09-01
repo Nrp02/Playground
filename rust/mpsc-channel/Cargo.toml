@@ -1,0 +1,7 @@
+[package]
+name = "mpsc-channel"
+version = "0.1.0"
+edition = "2021"
+description = "A hand-rolled multi-producer single-consumer channel built with Mutex and Condvar over a shared queue, unbounded and bounded (blocking) variants, no external crates."
+
+[dependencies]
