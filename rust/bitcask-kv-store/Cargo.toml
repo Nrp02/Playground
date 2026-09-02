@@ -1,0 +1,7 @@
+[package]
+name = "bitcask-kv-store"
+version = "0.1.0"
+edition = "2021"
+description = "A Bitcask-style log-structured key-value store with an in-memory keydir, hint files and merge compaction, no external crates."
+
+[dependencies]
