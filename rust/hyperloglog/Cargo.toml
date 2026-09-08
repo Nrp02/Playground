@@ -1,0 +1,7 @@
+[package]
+name = "hyperloglog"
+version = "0.1.0"
+edition = "2021"
+description = "A HyperLogLog cardinality estimator with a sparse representation, 6-bit packed dense registers, linear counting for the small range, mergeable unions and checksummed serialization, no external crates."
+
+[dependencies]
